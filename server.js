@@ -1,18 +1,8 @@
 // See https://github.com/typicode/json-server#module
 const jsonServer = require("json-server");
 const server = jsonServer.create();
-const router = jsonServer.router("./tmp/db.json");
+const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
-
-server.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
-  );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
 
 server.use(middlewares);
 // Add this before server.use(router)
